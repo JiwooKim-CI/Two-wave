@@ -1,4 +1,4 @@
-# Corrected complete-grid analysis of simulation_model1.R.
+
 # Install once: install.packages(c("data.table", "ggplot2", "ggdist", "jtools", "ragg"))
 library(data.table)
 N_POINTS <- as.integer(Sys.getenv("N_POINTS", "7"))
@@ -21,7 +21,7 @@ p_m2_x <- .2
 p_y2_x <- .2
 bias_names <- c("bias_ancova","bias_naive","bias_change","bias_change_1","bias_change_2")
 
-# The original covariance/regression expressions are retained below.
+
 calculate_chunk <- function(grid1) {
 grid1[, var_eps_m1 := 1 - p_m1_u^2]
 grid1[, var_eps_y1 := 1 - p_y1_u^2 - p_y1_m1^2 - 2 * p_y1_u * p_m1_u * p_y1_m1]
