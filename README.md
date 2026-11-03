@@ -1,6 +1,6 @@
-# Complete Two-Wave Mediation Analyses: Seven- and Nine-Point Grids
+# Two-Wave Mediation Analyses: Seven- and Nine-Point Grids
 
-This package runs both confounding models under three scenarios each: unrestricted, common trend, and ignorability. It enumerates all combinations of the free grid coefficients, saves numerical summaries, produces half-eye and bias-versus-violation figures, and compares the seven- and nine-point results.
+This package runs both confounding models (shared-confounder and time-varying confounders) under three scenarios each: unrestricted, common trend, and ignorability. It enumerates all combinations of the free grid coefficients, saves numerical summaries, produces half-eye and bias-versus-violation figures, and compares the seven- and nine-point results.
 
 ## Files
 
@@ -130,7 +130,6 @@ These restrictions make the outcome-only estimator Change(D) unbiased under the 
 
 ## Memory and execution controls
 
-The original `CJ()` enumeration and parameter names are preserved. Nested loops divide the grid into chunks; plotting frequencies and numerical sums are accumulated instead of retaining billions of raw rows.
 
 | Environment variable | Default | Purpose |
 |---|---|---|
@@ -167,26 +166,6 @@ Each model/grid folder contains:
 - `checkpoint.rds`: resumable accumulated state.
 - `session_info.txt`: grid and R environment.
 
-Time-varying common-trend CSVs use the restored `_2_1_c.csv` suffix, for example `ancova_2_1_c.csv`.
-
-## Figures
-
-The top-to-bottom method order is Naive, ANCOVA, Change (F), Change (A), Change (D).
-
-The half-eye figures use the supplied horizontal `stat_halfeye()` plus boxplot layout, method colors, frequency weights, and `theme_apa()`. Common-trend bandwidth adjustment is 5; other scenarios use 0.5. The viewing window is -0.5 to 0.5 without deleting values before density estimation. PDF size is six by six inches; PNGs are generated when ragg is available.
-
-| Model/scenario | Figure basename |
-|---|---|
-| Shared unrestricted | new_sim1 |
-| Shared common trend | new_sim2 |
-| Shared ignorability | new_sim3 |
-| Time-varying unrestricted | new_sim2_1 |
-| Time-varying common trend | new_sim2_2 |
-| Time-varying ignorability | new_sim2_3 |
-| Shared bias versus violation | sim_1_ig_2 |
-| Time-varying bias versus violation | sim_2_ig_2 |
-
-Line figures are generated automatically from `violation_curve.csv` quantities, using exact accumulated mean absolute biases, distinct black line types, and direct labels. Their axes include the computed curves rather than imposing the old 0.11 upper bound.
 
 ## Seven- versus nine-point comparison
 
