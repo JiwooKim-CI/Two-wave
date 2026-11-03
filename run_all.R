@@ -1,0 +1,5 @@
+source("run_grid.R")
+run_grid(7L)
+run_grid(9L)
+source("compare_grids.R")
+compare_grids("results")
